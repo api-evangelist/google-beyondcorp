@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cloud.google.com/schemas/beyondcorp/app-connection.json",
+  "title": "Google BeyondCorp App Connection",
+  "description": "Schema for a BeyondCorp app connection resource that defines a secure connection to a private application endpoint through BeyondCorp.",
+  "type": "object",
+  "required": ["applicationEndpoint"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the app connection"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "User-friendly display name for the app connection"
+    },
+    "uid": {
+      "type": "string",
+      "description": "Unique identifier of the app connection"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of network connectivity used by the connection",
+      "enum": ["TYPE_UNSPECIFIED", "TCP_PROXY"]
+    },
+    "applicationEndpoint": {
+      "$ref": "#/$defs/ApplicationEndpoint",
+      "description": "The endpoint of the application to connect to"
+    },
+    "connectors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Resource names of app connectors associated with this connection"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state of the app connection",
+      "enum": ["STATE_UNSPECIFIED", "CREATING", "CREATED", "UPDATING", "DELETING", "DOWN"]
+    },
+    "gateway": {
+      "$ref": "#/$defs/Gateway",
+      "description": "Gateway information for the connection"
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Labels applied to the app connection"
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the connection was created"
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the connection was last updated"
+    }
+  },
+  "$defs": {
+    "ApplicationEndpoint": {
+      "type": "object",
+      "description": "The endpoint of the application to connect to",
+      "required": ["host", "port"],
+      "properties": {
+        "host": {
+          "type": "string",
+          "description": "Hostname or IP address of the application"
+        },
+        "port": {
+          "type": "integer",
+          "description": "Port of the application",
+          "minimum": 1,
+          "maximum": 65535
+        }
+      }
+    },
+    "Gateway": {
+      "type": "object",
+      "description": "Gateway configuration for the app connection",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of gateway hosting the connection",
+          "enum": ["TYPE_UNSPECIFIED", "GCP_REGIONAL_MIG"]
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI of the gateway"
+        },
+        "ingressPort": {
+          "type": "integer",
+          "description": "The ingress port of the gateway"
+        }
+      }
+    }
+  }
+}

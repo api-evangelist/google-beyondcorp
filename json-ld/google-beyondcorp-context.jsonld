@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "bc": "https://cloud.google.com/beyondcorp/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "AppConnector": {
+      "@id": "bc:AppConnector",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "schema:alternateName",
+        "uid": "bc:uid",
+        "state": "bc:connectorState",
+        "principalInfo": "bc:principalInfo",
+        "resourceInfo": "bc:resourceInfo",
+        "labels": "bc:labels",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "AppConnection": {
+      "@id": "bc:AppConnection",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "schema:alternateName",
+        "uid": "bc:uid",
+        "type": "bc:connectionType",
+        "state": "bc:connectionState",
+        "applicationEndpoint": "bc:applicationEndpoint",
+        "connectors": {
+          "@id": "bc:connectors",
+          "@type": "@id"
+        },
+        "gateway": "bc:gateway",
+        "labels": "bc:labels",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "SecurityGateway": {
+      "@id": "bc:SecurityGateway",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "schema:alternateName",
+        "state": "bc:gatewayState",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ApplicationEndpoint": {
+      "@id": "bc:ApplicationEndpoint",
+      "@context": {
+        "host": "schema:hostname",
+        "port": "bc:port"
+      }
+    }
+  }
+}

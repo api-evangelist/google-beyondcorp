@@ -1,0 +1,566 @@
+openapi: 3.1.0
+info:
+  title: Google BeyondCorp API
+  description: >-
+    The BeyondCorp API provides programmatic access to manage zero-trust access
+    controls for enterprise resources. It enables creating and managing app
+    connectors, app connections, client connector services, and security
+    gateways for zero-trust enterprise deployments without requiring a
+    traditional VPN.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/beyondcorp-enterprise/docs
+  termsOfService: https://cloud.google.com/terms
+externalDocs:
+  description: BeyondCorp API Documentation
+  url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
+servers:
+  - url: https://beyondcorp.googleapis.com/v1
+    description: Production Server
+tags:
+  - name: AppConnectors
+    description: Operations for managing BeyondCorp app connectors
+  - name: AppConnections
+    description: Operations for managing BeyondCorp app connections
+  - name: ClientConnectorServices
+    description: Operations for managing client connector services
+  - name: SecurityGateways
+    description: Operations for managing BeyondCorp security gateways
+  - name: Operations
+    description: Operations for managing long-running operations
+security:
+  - oauth2: []
+paths:
+  /projects/{projectId}/locations/{location}/appConnectors:
+    get:
+      operationId: listAppConnectors
+      summary: List app connectors
+      description: Lists app connectors in the specified project and location.
+      tags:
+        - AppConnectors
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAppConnectorsResponse'
+    post:
+      operationId: createAppConnector
+      summary: Create an app connector
+      description: Creates a new app connector in the specified project and location.
+      tags:
+        - AppConnectors
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectorId
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppConnector'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/appConnectors/{appConnectorId}:
+    get:
+      operationId: getAppConnector
+      summary: Get an app connector
+      description: Gets details of a single app connector.
+      tags:
+        - AppConnectors
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppConnector'
+    patch:
+      operationId: updateAppConnector
+      summary: Update an app connector
+      description: Updates an existing app connector.
+      tags:
+        - AppConnectors
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updateMask
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppConnector'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteAppConnector
+      summary: Delete an app connector
+      description: Deletes an app connector.
+      tags:
+        - AppConnectors
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/appConnections:
+    get:
+      operationId: listAppConnections
+      summary: List app connections
+      description: Lists app connections in the specified project and location.
+      tags:
+        - AppConnections
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAppConnectionsResponse'
+    post:
+      operationId: createAppConnection
+      summary: Create an app connection
+      description: Creates a new app connection in the specified project and location.
+      tags:
+        - AppConnections
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppConnection'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/appConnections/{appConnectionId}:
+    get:
+      operationId: getAppConnection
+      summary: Get an app connection
+      description: Gets details of a single app connection.
+      tags:
+        - AppConnections
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppConnection'
+    delete:
+      operationId: deleteAppConnection
+      summary: Delete an app connection
+      description: Deletes an app connection.
+      tags:
+        - AppConnections
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: appConnectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/securityGateways:
+    get:
+      operationId: listSecurityGateways
+      summary: List security gateways
+      description: Lists security gateways in the specified project and location.
+      tags:
+        - SecurityGateways
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSecurityGatewaysResponse'
+    post:
+      operationId: createSecurityGateway
+      summary: Create a security gateway
+      description: Creates a new security gateway.
+      tags:
+        - SecurityGateways
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecurityGateway'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud resources
+  schemas:
+    AppConnector:
+      type: object
+      description: A BeyondCorp app connector resource.
+      properties:
+        name:
+          type: string
+          description: The resource name of the app connector.
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        uid:
+          type: string
+          description: Unique identifier of the app connector.
+        state:
+          type: string
+          enum:
+            - STATE_UNSPECIFIED
+            - CREATING
+            - CREATED
+            - UPDATING
+            - DELETING
+            - DOWN
+        principalInfo:
+          type: object
+          description: Principal information associated with the app connector.
+          properties:
+            serviceAccount:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email address of the service account.
+        resourceInfo:
+          type: object
+          description: Resource information of the connector.
+          properties:
+            id:
+              type: string
+            status:
+              type: string
+              enum:
+                - HEALTH_STATUS_UNSPECIFIED
+                - HEALTHY
+                - UNHEALTHY
+                - UNRESPONSIVE
+                - DEGRADED
+    AppConnection:
+      type: object
+      description: A BeyondCorp app connection resource.
+      properties:
+        name:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        uid:
+          type: string
+        type:
+          type: string
+          enum:
+            - TYPE_UNSPECIFIED
+            - TCP_PROXY
+        applicationEndpoint:
+          type: object
+          description: The endpoint of the application.
+          properties:
+            host:
+              type: string
+              description: Hostname or IP address of the application.
+            port:
+              type: integer
+              description: Port of the application.
+        connectors:
+          type: array
+          items:
+            type: string
+          description: App connectors associated with this connection.
+        state:
+          type: string
+          enum:
+            - STATE_UNSPECIFIED
+            - CREATING
+            - CREATED
+            - UPDATING
+            - DELETING
+            - DOWN
+        gateway:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - TYPE_UNSPECIFIED
+                - GCP_REGIONAL_MIG
+            uri:
+              type: string
+    SecurityGateway:
+      type: object
+      description: A BeyondCorp security gateway resource.
+      properties:
+        name:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        displayName:
+          type: string
+        state:
+          type: string
+          enum:
+            - STATE_UNSPECIFIED
+            - CREATING
+            - UPDATING
+            - DELETING
+            - RUNNING
+            - DOWN
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListAppConnectorsResponse:
+      type: object
+      properties:
+        appConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnector'
+        nextPageToken:
+          type: string
+    ListAppConnectionsResponse:
+      type: object
+      properties:
+        appConnections:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnection'
+        nextPageToken:
+          type: string
+    ListSecurityGatewaysResponse:
+      type: object
+      properties:
+        securityGateways:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGateway'
+        nextPageToken:
+          type: string
