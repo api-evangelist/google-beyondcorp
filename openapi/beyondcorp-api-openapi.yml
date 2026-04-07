@@ -35,7 +35,7 @@ paths:
   /projects/{projectId}/locations/{location}/appConnectors:
     get:
       operationId: listAppConnectors
-      summary: List app connectors
+      summary: Google BeyondCorp List app connectors
       description: Lists app connectors in the specified project and location.
       tags:
         - AppConnectors
@@ -75,7 +75,7 @@ paths:
                 $ref: '#/components/schemas/ListAppConnectorsResponse'
     post:
       operationId: createAppConnector
-      summary: Create an app connector
+      summary: Google BeyondCorp Create an app connector
       description: Creates a new app connector in the specified project and location.
       tags:
         - AppConnectors
@@ -110,7 +110,7 @@ paths:
   /projects/{projectId}/locations/{location}/appConnectors/{appConnectorId}:
     get:
       operationId: getAppConnector
-      summary: Get an app connector
+      summary: Google BeyondCorp Get an app connector
       description: Gets details of a single app connector.
       tags:
         - AppConnectors
@@ -139,7 +139,7 @@ paths:
                 $ref: '#/components/schemas/AppConnector'
     patch:
       operationId: updateAppConnector
-      summary: Update an app connector
+      summary: Google BeyondCorp Update an app connector
       description: Updates an existing app connector.
       tags:
         - AppConnectors
@@ -178,7 +178,7 @@ paths:
                 $ref: '#/components/schemas/Operation'
     delete:
       operationId: deleteAppConnector
-      summary: Delete an app connector
+      summary: Google BeyondCorp Delete an app connector
       description: Deletes an app connector.
       tags:
         - AppConnectors
@@ -208,7 +208,7 @@ paths:
   /projects/{projectId}/locations/{location}/appConnections:
     get:
       operationId: listAppConnections
-      summary: List app connections
+      summary: Google BeyondCorp List app connections
       description: Lists app connections in the specified project and location.
       tags:
         - AppConnections
@@ -240,7 +240,7 @@ paths:
                 $ref: '#/components/schemas/ListAppConnectionsResponse'
     post:
       operationId: createAppConnection
-      summary: Create an app connection
+      summary: Google BeyondCorp Create an app connection
       description: Creates a new app connection in the specified project and location.
       tags:
         - AppConnections
@@ -271,7 +271,7 @@ paths:
   /projects/{projectId}/locations/{location}/appConnections/{appConnectionId}:
     get:
       operationId: getAppConnection
-      summary: Get an app connection
+      summary: Google BeyondCorp Get an app connection
       description: Gets details of a single app connection.
       tags:
         - AppConnections
@@ -300,7 +300,7 @@ paths:
                 $ref: '#/components/schemas/AppConnection'
     delete:
       operationId: deleteAppConnection
-      summary: Delete an app connection
+      summary: Google BeyondCorp Delete an app connection
       description: Deletes an app connection.
       tags:
         - AppConnections
@@ -330,7 +330,7 @@ paths:
   /projects/{projectId}/locations/{location}/securityGateways:
     get:
       operationId: listSecurityGateways
-      summary: List security gateways
+      summary: Google BeyondCorp List security gateways
       description: Lists security gateways in the specified project and location.
       tags:
         - SecurityGateways
@@ -354,7 +354,7 @@ paths:
                 $ref: '#/components/schemas/ListSecurityGatewaysResponse'
     post:
       operationId: createSecurityGateway
-      summary: Create a security gateway
+      summary: Google BeyondCorp Create a security gateway
       description: Creates a new security gateway.
       tags:
         - SecurityGateways
