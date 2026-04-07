@@ -19,16 +19,12 @@ servers:
   - url: https://beyondcorp.googleapis.com/v1
     description: Production Server
 tags:
-  - name: AppConnectors
-    description: Operations for managing BeyondCorp app connectors
   - name: AppConnections
     description: Operations for managing BeyondCorp app connections
-  - name: ClientConnectorServices
-    description: Operations for managing client connector services
+  - name: AppConnectors
+    description: Operations for managing BeyondCorp app connectors
   - name: SecurityGateways
     description: Operations for managing BeyondCorp security gateways
-  - name: Operations
-    description: Operations for managing long-running operations
 security:
   - oauth2: []
 paths:

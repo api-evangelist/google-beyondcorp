@@ -14,12 +14,12 @@ created: '2026-03-13'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
-  - Zero Trust
-  - Security
   - Access Control
-  - Identity
-  - VPN Alternative
   - Enterprise Security
+  - Identity
+  - Security
+  - VPN Alternative
+  - Zero Trust
 apis:
   - aid: google-beyondcorp:beyondcorp
     name: BeyondCorp API
@@ -34,10 +34,10 @@ apis:
     humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
     baseURL: https://beyondcorp.googleapis.com
     tags:
-      - Zero Trust
-      - App Connectors
       - Access Control
+      - App Connectors
       - Security Gateway
+      - Zero Trust
     properties:
       - type: Documentation
         url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
