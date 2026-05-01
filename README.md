@@ -16,7 +16,7 @@ Google BeyondCorp Enterprise is a zero-trust security platform that enables secu
 ## Timestamps
 
 - **Created:** 2026-03-13
-- **Modified:** 2026-03-13
+- **Modified:** 2026-04-28
 
 ## APIs
 
