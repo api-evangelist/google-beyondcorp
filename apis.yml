@@ -46,11 +46,11 @@ apis:
       - type: JSONSchema
         url: json-schema/google-beyondcorp-app-connection-schema.json
 common:
-  - type: Getting Started
+  - type: GettingStarted
     url: https://cloud.google.com/beyondcorp-enterprise/docs/overview
   - type: Pricing
     url: https://cloud.google.com/beyondcorp-enterprise/pricing
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-beyondcorp-context.jsonld
   - type: Integrations
     url: https://cloud.google.com/marketplace
