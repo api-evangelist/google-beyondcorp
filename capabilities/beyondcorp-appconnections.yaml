@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google BeyondCorp API — AppConnections
+  description: 'Google BeyondCorp API — AppConnections. 4 operations. Lead operation: Google BeyondCorp List app connections.
+    Self-contained Naftiko capability covering one Google Beyondcorp business surface.'
+  tags:
+  - Google Beyondcorp
+  - AppConnections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_BEYONDCORP_API_KEY: GOOGLE_BEYONDCORP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beyondcorp-appconnections
+    baseUri: https://beyondcorp.googleapis.com/v1
+    description: Google BeyondCorp API — AppConnections business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-locations-location-appConnections
+      path: /projects/{projectId}/locations/{location}/appConnections
+      operations:
+      - name: listappconnections
+        method: GET
+        description: Google BeyondCorp List app connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+      - name: createappconnection
+        method: POST
+        description: Google BeyondCorp Create an app connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectId-locations-location-appConnections-appConnectionId
+      path: /projects/{projectId}/locations/{location}/appConnections/{appConnectionId}
+      operations:
+      - name: getappconnection
+        method: GET
+        description: Google BeyondCorp Get an app connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectionId
+          in: path
+          type: string
+          required: true
+      - name: deleteappconnection
+        method: DELETE
+        description: Google BeyondCorp Delete an app connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectionId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_BEYONDCORP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beyondcorp-appconnections-rest
+    port: 8080
+    description: REST adapter for Google BeyondCorp API — AppConnections. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/locations/{location}/appconnections
+      name: projects-projectid-locations-location-appconnections
+      description: REST surface for projects-projectId-locations-location-appConnections.
+      operations:
+      - method: GET
+        name: listappconnections
+        description: Google BeyondCorp List app connections
+        call: beyondcorp-appconnections.listappconnections
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createappconnection
+        description: Google BeyondCorp Create an app connection
+        call: beyondcorp-appconnections.createappconnection
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/locations/{location}/appconnections/{appconnectionid}
+      name: projects-projectid-locations-location-appconnections-appconnectionid
+      description: REST surface for projects-projectId-locations-location-appConnections-appConnectionId.
+      operations:
+      - method: GET
+        name: getappconnection
+        description: Google BeyondCorp Get an app connection
+        call: beyondcorp-appconnections.getappconnection
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectionId: rest.appConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteappconnection
+        description: Google BeyondCorp Delete an app connection
+        call: beyondcorp-appconnections.deleteappconnection
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectionId: rest.appConnectionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beyondcorp-appconnections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google BeyondCorp API — AppConnections. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-beyondcorp-list-app-connections
+      description: Google BeyondCorp List app connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beyondcorp-appconnections.listappconnections
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-create-app-connection
+      description: Google BeyondCorp Create an app connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beyondcorp-appconnections.createappconnection
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-get-app-connection
+      description: Google BeyondCorp Get an app connection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beyondcorp-appconnections.getappconnection
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectionId: tools.appConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-delete-app-connection
+      description: Google BeyondCorp Delete an app connection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: beyondcorp-appconnections.deleteappconnection
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectionId: tools.appConnectionId
+      outputParameters:
+      - type: object
+        mapping: $.

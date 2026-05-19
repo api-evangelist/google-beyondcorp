@@ -1,0 +1,314 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google BeyondCorp API — AppConnectors
+  description: 'Google BeyondCorp API — AppConnectors. 5 operations. Lead operation: Google BeyondCorp List app connectors.
+    Self-contained Naftiko capability covering one Google Beyondcorp business surface.'
+  tags:
+  - Google Beyondcorp
+  - AppConnectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_BEYONDCORP_API_KEY: GOOGLE_BEYONDCORP_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: beyondcorp-appconnectors
+    baseUri: https://beyondcorp.googleapis.com/v1
+    description: Google BeyondCorp API — AppConnectors business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-locations-location-appConnectors
+      path: /projects/{projectId}/locations/{location}/appConnectors
+      operations:
+      - name: listappconnectors
+        method: GET
+        description: Google BeyondCorp List app connectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        - name: orderBy
+          in: query
+          type: string
+      - name: createappconnector
+        method: POST
+        description: Google BeyondCorp Create an app connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectorId
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectId-locations-location-appConnectors-appConnectorId
+      path: /projects/{projectId}/locations/{location}/appConnectors/{appConnectorId}
+      operations:
+      - name: getappconnector
+        method: GET
+        description: Google BeyondCorp Get an app connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectorId
+          in: path
+          type: string
+          required: true
+      - name: updateappconnector
+        method: PATCH
+        description: Google BeyondCorp Update an app connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectorId
+          in: path
+          type: string
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteappconnector
+        method: DELETE
+        description: Google BeyondCorp Delete an app connector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: appConnectorId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_BEYONDCORP_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: beyondcorp-appconnectors-rest
+    port: 8080
+    description: REST adapter for Google BeyondCorp API — AppConnectors. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/locations/{location}/appconnectors
+      name: projects-projectid-locations-location-appconnectors
+      description: REST surface for projects-projectId-locations-location-appConnectors.
+      operations:
+      - method: GET
+        name: listappconnectors
+        description: Google BeyondCorp List app connectors
+        call: beyondcorp-appconnectors.listappconnectors
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+          filter: rest.filter
+          orderBy: rest.orderBy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createappconnector
+        description: Google BeyondCorp Create an app connector
+        call: beyondcorp-appconnectors.createappconnector
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectorId: rest.appConnectorId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/locations/{location}/appconnectors/{appconnectorid}
+      name: projects-projectid-locations-location-appconnectors-appconnectorid
+      description: REST surface for projects-projectId-locations-location-appConnectors-appConnectorId.
+      operations:
+      - method: GET
+        name: getappconnector
+        description: Google BeyondCorp Get an app connector
+        call: beyondcorp-appconnectors.getappconnector
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectorId: rest.appConnectorId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateappconnector
+        description: Google BeyondCorp Update an app connector
+        call: beyondcorp-appconnectors.updateappconnector
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectorId: rest.appConnectorId
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteappconnector
+        description: Google BeyondCorp Delete an app connector
+        call: beyondcorp-appconnectors.deleteappconnector
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          appConnectorId: rest.appConnectorId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: beyondcorp-appconnectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google BeyondCorp API — AppConnectors. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-beyondcorp-list-app-connectors
+      description: Google BeyondCorp List app connectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beyondcorp-appconnectors.listappconnectors
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        filter: tools.filter
+        orderBy: tools.orderBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-create-app-connector
+      description: Google BeyondCorp Create an app connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: beyondcorp-appconnectors.createappconnector
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectorId: tools.appConnectorId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-get-app-connector
+      description: Google BeyondCorp Get an app connector
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: beyondcorp-appconnectors.getappconnector
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectorId: tools.appConnectorId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-update-app-connector
+      description: Google BeyondCorp Update an app connector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: beyondcorp-appconnectors.updateappconnector
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectorId: tools.appConnectorId
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-beyondcorp-delete-app-connector
+      description: Google BeyondCorp Delete an app connector
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: beyondcorp-appconnectors.deleteappconnector
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        appConnectorId: tools.appConnectorId
+      outputParameters:
+      - type: object
+        mapping: $.
