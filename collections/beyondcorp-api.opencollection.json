@@ -1,0 +1,380 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google BeyondCorp API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AppConnectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google BeyondCorp List app connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnectors",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists app connectors in the specified project and location."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Create an app connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnectors",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectorId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new app connector in the specified project and location."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Get an app connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnectors/:appConnectorId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets details of a single app connector."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Update an app connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnectors/:appConnectorId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectorId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing app connector."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Delete an app connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnectors/:appConnectorId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an app connector."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AppConnections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google BeyondCorp List app connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnections",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists app connections in the specified project and location."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Create an app connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnections",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new app connection in the specified project and location."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Get an app connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnections/:appConnectionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets details of a single app connection."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Delete an app connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/appConnections/:appConnectionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appConnectionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an app connection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SecurityGateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google BeyondCorp List security gateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/securityGateways",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists security gateways in the specified project and location."
+        },
+        {
+          "info": {
+            "name": "Google BeyondCorp Create a security gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://beyondcorp.googleapis.com/v1/projects/:projectId/locations/:location/securityGateways",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new security gateway."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
