@@ -6,7 +6,7 @@ description: >-
   resources, enabling organizations to implement zero-trust access policies across multi-cloud and on-premises
   environments using app connectors and client connectors.
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-beyondcorp/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -26,7 +26,7 @@ apis:
       Developers can use the API to create and manage app connectors, app connections, and client connector services
       that enable secure access to private applications without a VPN. The API supports managing gateways, connection
       policies, and security configurations for zero-trust enterprise deployments.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
     baseURL: https://beyondcorp.googleapis.com
     tags:
