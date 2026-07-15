@@ -42,6 +42,8 @@ apis:
       - type: JSONSchema
         url: json-schema/google-beyondcorp-app-connection-schema.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-beyondcorp-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-beyondcorp-vulnerability-disclosure.yml
   - type: DomainSecurity
