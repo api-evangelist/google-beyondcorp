@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  title: Google BeyondCorp AppConnections AppConnectors API
+  description: The BeyondCorp API provides programmatic access to manage zero-trust access controls for enterprise resources. It enables creating and managing app connectors, app connections, client connector services, and security gateways for zero-trust enterprise deployments without requiring a traditional VPN.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/beyondcorp-enterprise/docs
+  termsOfService: https://cloud.google.com/terms
+servers:
+- url: https://beyondcorp.googleapis.com/v1
+  description: Production Server
+security:
+- oauth2: []
+tags:
+- name: AppConnectors
+  description: Operations for managing BeyondCorp app connectors
+paths:
+  /projects/{projectId}/locations/{location}/appConnectors:
+    get:
+      operationId: listAppConnectors
+      summary: Google BeyondCorp List app connectors
+      description: Lists app connectors in the specified project and location.
+      tags:
+      - AppConnectors
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: orderBy
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAppConnectorsResponse'
+    post:
+      operationId: createAppConnector
+      summary: Google BeyondCorp Create an app connector
+      description: Creates a new app connector in the specified project and location.
+      tags:
+      - AppConnectors
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appConnectorId
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppConnector'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/appConnectors/{appConnectorId}:
+    get:
+      operationId: getAppConnector
+      summary: Google BeyondCorp Get an app connector
+      description: Gets details of a single app connector.
+      tags:
+      - AppConnectors
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appConnectorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppConnector'
+    patch:
+      operationId: updateAppConnector
+      summary: Google BeyondCorp Update an app connector
+      description: Updates an existing app connector.
+      tags:
+      - AppConnectors
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appConnectorId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppConnector'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteAppConnector
+      summary: Google BeyondCorp Delete an app connector
+      description: Deletes an app connector.
+      tags:
+      - AppConnectors
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appConnectorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListAppConnectorsResponse:
+      type: object
+      properties:
+        appConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnector'
+        nextPageToken:
+          type: string
+    AppConnector:
+      type: object
+      description: A BeyondCorp app connector resource.
+      properties:
+        name:
+          type: string
+          description: The resource name of the app connector.
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        uid:
+          type: string
+          description: Unique identifier of the app connector.
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - CREATING
+          - CREATED
+          - UPDATING
+          - DELETING
+          - DOWN
+        principalInfo:
+          type: object
+          description: Principal information associated with the app connector.
+          properties:
+            serviceAccount:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email address of the service account.
+        resourceInfo:
+          type: object
+          description: Resource information of the connector.
+          properties:
+            id:
+              type: string
+            status:
+              type: string
+              enum:
+              - HEALTH_STATUS_UNSPECIFIED
+              - HEALTHY
+              - UNHEALTHY
+              - UNRESPONSIVE
+              - DEGRADED
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud resources
+externalDocs:
+  description: BeyondCorp API Documentation
+  url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
