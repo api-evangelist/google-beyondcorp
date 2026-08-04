@@ -1,0 +1,18 @@
+{
+  "provider": "google-beyondcorp",
+  "sources": [
+    "google-beyondcorp-appconnections-api-openapi.yml",
+    "google-beyondcorp-appconnectors-api-openapi.yml",
+    "google-beyondcorp-securitygateways-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-beyondcorp-appconnections-api-openapi.yml",
+    "google-beyondcorp-appconnectors-api-openapi.yml",
+    "google-beyondcorp-securitygateways-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
