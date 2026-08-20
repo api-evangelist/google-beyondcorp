@@ -38,6 +38,8 @@ apis:
   humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
   baseURL: https://beyondcorp.googleapis.com
   tags:
+  - App Connections
+  tags_raw:
   - AppConnections
   properties:
   - type: OpenAPI
