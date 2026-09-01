@@ -50,7 +50,7 @@ apis:
   humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
   baseURL: https://beyondcorp.googleapis.com
   tags:
-  - AppConnections
+  - App Connections
   tags_raw:
   - AppConnections
   properties:
