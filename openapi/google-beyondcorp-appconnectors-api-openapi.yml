@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google BeyondCorp AppConnections AppConnectors API
+  title: Google BeyondCorp AppConnections App Connectors API
   description: The BeyondCorp API provides programmatic access to manage zero-trust access controls for enterprise resources. It enables creating and managing app connectors, app connections, client connector services, and security gateways for zero-trust enterprise deployments without requiring a traditional VPN.
   version: v1
   contact:
