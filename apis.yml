@@ -44,22 +44,6 @@ tags:
   - VPN Alternative
   - Zero Trust
 apis:
-- aid: google-beyondcorp:google-beyondcorp-appconnections-api
-  name: Google BeyondCorp AppConnections API
-  description: Operations for managing BeyondCorp app connections
-  humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
-  baseURL: https://beyondcorp.googleapis.com
-  tags:
-  - App Connections
-  tags_raw:
-  - AppConnections
-  properties:
-  - type: OpenAPI
-    url: openapi/google-beyondcorp-appconnections-api-openapi.yml
-  - type: Documentation
-    url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
-  - type: JSONSchema
-    url: json-schema/google-beyondcorp-app-connection-schema.json
 - aid: google-beyondcorp:google-beyondcorp-appconnectors-api
   name: Google BeyondCorp AppConnectors API
   description: Operations for managing BeyondCorp app connectors
@@ -84,6 +68,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-beyondcorp-securitygateways-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
+  - type: JSONSchema
+    url: json-schema/google-beyondcorp-app-connection-schema.json
+- aid: google-beyondcorp:google-beyondcorp-app-connections-api
+  name: Google BeyondCorp App Connections API
+  description: Operations for managing BeyondCorp app connections
+  humanURL: https://cloud.google.com/beyondcorp-enterprise/docs
+  baseURL: https://beyondcorp.googleapis.com
+  tags:
+  - App Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/google-beyondcorp-app-connections-api-openapi.yml
   - type: Documentation
     url: https://cloud.google.com/beyondcorp-enterprise/docs/reference/rest
   - type: JSONSchema
