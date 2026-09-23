@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google BeyondCorp AppConnections App Connectors API
+  title: Google BeyondCorp App Connectors API
   description: The BeyondCorp API provides programmatic access to manage zero-trust access controls for enterprise resources. It enables creating and managing app connectors, app connections, client connector services, and security gateways for zero-trust enterprise deployments without requiring a traditional VPN.
   version: v1
   contact:
@@ -191,22 +191,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-    ListAppConnectorsResponse:
-      type: object
-      properties:
-        appConnectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppConnector'
-        nextPageToken:
-          type: string
     AppConnector:
       type: object
       description: A BeyondCorp app connector resource.
@@ -262,6 +246,22 @@ components:
               - UNHEALTHY
               - UNRESPONSIVE
               - DEGRADED
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListAppConnectorsResponse:
+      type: object
+      properties:
+        appConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnector'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

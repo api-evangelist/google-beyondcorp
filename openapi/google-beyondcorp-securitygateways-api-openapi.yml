@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google BeyondCorp AppConnections Security Gateways API
+  title: Google BeyondCorp Security Gateways API
   description: The BeyondCorp API provides programmatic access to manage zero-trust access controls for enterprise resources. It enables creating and managing app connectors, app connections, client connector services, and security gateways for zero-trust enterprise deployments without requiring a traditional VPN.
   version: v1
   contact:
@@ -80,15 +80,6 @@ components:
           type: string
         done:
           type: boolean
-    ListSecurityGatewaysResponse:
-      type: object
-      properties:
-        securityGateways:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGateway'
-        nextPageToken:
-          type: string
     SecurityGateway:
       type: object
       description: A BeyondCorp security gateway resource.
@@ -112,6 +103,15 @@ components:
           - DELETING
           - RUNNING
           - DOWN
+    ListSecurityGatewaysResponse:
+      type: object
+      properties:
+        securityGateways:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGateway'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
