@@ -140,6 +140,15 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
+    ListAppConnectionsResponse:
+      type: object
+      properties:
+        appConnections:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnection'
+        nextPageToken:
+          type: string
     AppConnection:
       type: object
       description: A BeyondCorp app connection resource.
@@ -199,15 +208,6 @@ components:
               - GCP_REGIONAL_MIG
             uri:
               type: string
-    ListAppConnectionsResponse:
-      type: object
-      properties:
-        appConnections:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppConnection'
-        nextPageToken:
-          type: string
     Operation:
       type: object
       properties:
