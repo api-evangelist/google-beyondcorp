@@ -191,15 +191,13 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    ListAppConnectorsResponse:
+    Operation:
       type: object
       properties:
-        appConnectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppConnector'
-        nextPageToken:
+        name:
           type: string
+        done:
+          type: boolean
     AppConnector:
       type: object
       description: A BeyondCorp app connector resource.
@@ -255,13 +253,15 @@ components:
               - UNHEALTHY
               - UNRESPONSIVE
               - DEGRADED
-    Operation:
+    ListAppConnectorsResponse:
       type: object
       properties:
-        name:
+        appConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnector'
+        nextPageToken:
           type: string
-        done:
-          type: boolean
   securitySchemes:
     oauth2:
       type: oauth2
