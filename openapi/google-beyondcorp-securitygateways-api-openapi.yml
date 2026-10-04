@@ -73,15 +73,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    ListSecurityGatewaysResponse:
-      type: object
-      properties:
-        securityGateways:
-          type: array
-          items:
-            $ref: '#/components/schemas/SecurityGateway'
-        nextPageToken:
-          type: string
     SecurityGateway:
       type: object
       description: A BeyondCorp security gateway resource.
@@ -112,6 +103,15 @@ components:
           type: string
         done:
           type: boolean
+    ListSecurityGatewaysResponse:
+      type: object
+      properties:
+        securityGateways:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityGateway'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -198,6 +198,15 @@ components:
           type: string
         done:
           type: boolean
+    ListAppConnectorsResponse:
+      type: object
+      properties:
+        appConnectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppConnector'
+        nextPageToken:
+          type: string
     AppConnector:
       type: object
       description: A BeyondCorp app connector resource.
@@ -253,15 +262,6 @@ components:
               - UNHEALTHY
               - UNRESPONSIVE
               - DEGRADED
-    ListAppConnectorsResponse:
-      type: object
-      properties:
-        appConnectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppConnector'
-        nextPageToken:
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2
