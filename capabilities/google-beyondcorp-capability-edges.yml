@@ -1,0 +1,44 @@
+slug: google-beyondcorp
+provider: Google BeyondCorp
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: App Connections
+  spec_file: google-beyondcorp-app-connections-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '"zero-trust security platform that enables secure access to applications and resources without
+    requiring a traditional VPN"; createAppConnection'
+  reason: App connections broker identity- and context-aware access to enterprise resources, which is
+    identity and access management; some ambiguity with security architecture (zero trust).
+- tag: AppConnectors
+  spec_file: google-beyondcorp-appconnectors-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: '"It provides identity and context-aware access controls for enterprise resources"; createAppConnector'
+  reason: App connectors are the enforcement components of zero-trust access to applications; fits identity
+    & access management, though it could also be classed as security architecture/zero trust.
+- tag: SecurityGateways
+  spec_file: google-beyondcorp-securitygateways-api-openapi.yml
+  capability_id: BC-620.50
+  capability_id_l1: BC-620
+  capability_name: Security Architecture Management
+  confidence: 0.7
+  evidence: POST /projects/{projectId}/locations/{location}/securityGateways createSecurityGateway; "security
+    gateways for zero-trust enterprise deployments"
+  reason: Security gateway provisioning is secure-design/zero-trust infrastructure; sub-capability choice
+    between security architecture and IAM is somewhat ambiguous.

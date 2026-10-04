@@ -87,6 +87,9 @@ apis:
   - type: JSONSchema
     url: json-schema/google-beyondcorp-app-connection-schema.json
 common:
+  - type: CapabilityMap
+    url: capabilities/google-beyondcorp-capability-edges.yml
+    name: Google BeyondCorp Business Capability Map
   - type: Website
     url: https://www.google.com/
   - type: AgenticAccess
