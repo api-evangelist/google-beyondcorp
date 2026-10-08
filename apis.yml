@@ -87,6 +87,12 @@ apis:
   - type: JSONSchema
     url: json-schema/google-beyondcorp-app-connection-schema.json
 common:
+  - type: Plans
+    url: plans/google-beyondcorp-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-beyondcorp-rate-limits.yml
+  - type: FinOps
+    url: finops/google-beyondcorp-finops.yml
   - type: CapabilityMap
     url: capabilities/google-beyondcorp-capability-edges.yml
     name: Google BeyondCorp Business Capability Map
