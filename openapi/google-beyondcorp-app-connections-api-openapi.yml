@@ -140,13 +140,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     ListAppConnectionsResponse:
       type: object
       properties:
@@ -156,6 +149,13 @@ components:
             $ref: '#/components/schemas/AppConnection'
         nextPageToken:
           type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     AppConnection:
       type: object
       description: A BeyondCorp app connection resource.
